@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国主要城市天气</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #1e88e5;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+        .city-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        .city-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .city-info {
+            padding: 1.5rem;
+        }
+        .city-name {
+            font-size: 1.5rem;
+            color: #1e88e5;
+            margin-bottom: 1rem;
+        }
+        .weather-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .description {
+            color: #666;
+            margin-top: 1rem;
+        }
+        .update-time {
+            text-align: center;
+            color: #666;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>中国主要城市天气</h1>
+            <p>实时天气信息与城市风貌</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="city-grid">
+            <div class="city-card">
+                <img src="https://replicate.delivery/xezq/1Ce7hqaxkw18LCW7sBfrHn1iQVzI3ieYVNveQVv3RusOXsWRB/out-0.webp" alt="北京天气" class="city-image">
+                <div class="city-info">
+                    <h2 class="city-name">北京</h2>
+                    <div class="weather-info">
+                        <p>天气：晴天</p>
+                        <p>气温：1-13℃</p>
+                    </div>
+                    <p class="description">北京作为中国的首都，是一座融合古今的城市。标志性的长城和现代化的摩天大楼共同构成了独特的城市景观。今天晴朗的天气让游客能够尽情欣赏这座城市的美景。</p>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://replicate.delivery/xezq/vEPYLgdKMPqHCtHgyrf79M38wqaZuOQWpUi6cqwalSYfLrVUA/out-0.webp" alt="上海天气" class="city-image">
+                <div class="city-info">
+                    <h2 class="city-name">上海</h2>
+                    <div class="weather-info">
+                        <p>天气：阴转多云</p>
+                        <p>气温：6-11℃</p>
+                    </div>
+                    <p class="description">上海是中国最大的经济中心，东方明珠塔等标志性建筑展现了这座国际化大都市的现代魅力。今天阴转多云的天气，为这座繁华的城市增添了几分朦胧美。</p>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://replicate.delivery/xezq/BiAUIAESJ9J6ARrqtyDgrYa9boavh9xNetng4mvcsqsEm1KKA/out-0.webp" alt="广州天气" class="city-image">
+                <div class="city-info">
+                    <h2 class="city-name">广州</h2>
+                    <div class="weather-info">
+                        <p>天气：小雨转雷阵雨</p>
+                        <p>气温：10-15℃</p>
+                    </div>
+                    <p class="description">广州是中国南方重要的商业中心，广州塔成为了城市新地标。今天的雨天虽然带来了些许不便，但也为这座充满活力的城市增添了别样风情。</p>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <img src="https://replicate.delivery/xezq/JsFo0uTmQI6lDVmfleMW3OqueRKrEh3lwrx07eoZvrdUxsWRB/out-0.webp" alt="深圳天气" class="city-image">
+                <div class="city-info">
+                    <h2 class="city-name">深圳</h2>
+                    <div class="weather-info">
+                        <p>天气：多云</p>
+                        <p>气温：13-18℃</p>
+                    </div>
+                    <p class="description">深圳是中国改革开放的窗口，平安金融中心等超高层建筑展现了这座城市的创新活力。今天多云的天气，让人们在忙碌之余也能感受到舒适的温度。</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="update-time">更新时间：2025年3月6日 09:58</p>
+    </main>
+</body>
+</html>
