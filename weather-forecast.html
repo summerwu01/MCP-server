@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州天气预报</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .weather-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .weather-icon {
+            font-size: 48px;
+            margin: 10px 0;
+            color: #4a90e2;
+        }
+        .date {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .temp {
+            font-size: 1.2em;
+            color: #1a1a1a;
+            margin: 10px 0;
+        }
+        .wind {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .summary {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>广州未来5天天气预报</h1>
+    <div class="weather-container">
+        <div class="weather-card">
+            <div class="date">3月6日</div>
+            <i class="fas fa-cloud-showers-heavy weather-icon"></i>
+            <div class="condition">小雨转雷阵雨</div>
+            <div class="temp">10-15℃</div>
+            <div class="wind">风力小于3级</div>
+        </div>
+        <div class="weather-card">
+            <div class="date">3月7日</div>
+            <i class="fas fa-cloud-rain weather-icon"></i>
+            <div class="condition">雷阵雨转阴</div>
+            <div class="temp">11-15℃</div>
+            <div class="wind">风力小于3级</div>
+        </div>
+        <div class="weather-card">
+            <div class="date">3月8日</div>
+            <i class="fas fa-cloud weather-icon"></i>
+            <div class="condition">阴天</div>
+            <div class="temp">15-20℃</div>
+            <div class="wind">风力小于3级</div>
+        </div>
+        <div class="weather-card">
+            <div class="date">3月9日</div>
+            <i class="fas fa-cloud weather-icon"></i>
+            <div class="condition">阴天</div>
+            <div class="temp">16-21℃</div>
+            <div class="wind">风力小于3级</div>
+        </div>
+        <div class="weather-card">
+            <div class="date">3月10日</div>
+            <i class="fas fa-cloud weather-icon"></i>
+            <div class="condition">阴天</div>
+            <div class="temp">17-22℃</div>
+            <div class="wind">风力小于3级</div>
+        </div>
+    </div>
+    <div class="summary">
+        <h3>天气趋势总结</h3>
+        <p>未来5天以阴雨天气为主，气温逐渐回升，风力较小。建议适当添加衣物，出门请携带雨具。</p>
+    </div>
+</body>
+</html>
