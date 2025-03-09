@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永恒之爱 - 花语之美</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background-color: #1b2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-info h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #1b2937;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .product-tag {
+            background-color: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .buy-button {
+            background-color: #1b2937;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #2c3e50;
+        }
+
+        .product-details {
+            margin-top: 40px;
+        }
+
+        .detail-section {
+            margin-bottom: 30px;
+        }
+
+        .detail-section h2 {
+            font-size: 20px;
+            color: #1b2937;
+            margin-bottom: 15px;
+        }
+
+        .detail-section ul {
+            list-style-type: none;
+        }
+
+        .detail-section li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .detail-section li::before {
+            content: "•";
+            color: #1b2937;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .delivery-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .delivery-info h3 {
+            color: #1b2937;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #1b2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><a href="flower-shop.html">花语之美</a></h1>
+        <div class="nav-links">
+            <a href="flower-shop.html">所有花束</a>
+            <a href="#">新品上市</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系客服</a>
+        </div>
+    </header>
+
+    <div class="product-container">
+        <div class="product-image-container">
+            <img src="https://replicate.delivery/xezq/m8kN9xEWVYoQJFidIFYgwXjkHeuZZSInhotNNj2uPp1x1ZLKA/out-0.webp" alt="永恒之爱" class="product-image">
+        </div>
+        
+        <div class="product-info">
+            <h1>永恒之爱</h1>
+            <div class="product-price">¥499</div>
+            <div class="product-description">
+                奢华的红玫瑰与白兰花完美结合，象征着永恒的爱与浪漫。每一支花都经过精心挑选，完美呈现爱的真谛。这款高贵典雅的花束，是表达真挚感情的最佳选择。
+            </div>
+            <div class="product-tags">
+                <span class="product-tag">高级定制</span>
+                <span class="product-tag">热卖</span>
+                <span class="product-tag">奢华系列</span>
+            </div>
+            <button class="buy-button">立即购买</button>
+
+            <div class="delivery-info">
+                <h3>配送信息</h3>
+                <p>北上广深等城市支持当日送达，其他城市1-3天送达</p>
+            </div>
+
+            <div class="product-details">
+                <div class="detail-section">
+                    <h2>花材组成</h2>
+                    <ul>
+                        <li>顶级红玫瑰 12支</li>
+                        <li>进口白兰花 5支</li>
+                        <li>尤加利叶点缀</li>
+                        <li>高级配花装饰</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h2>适用场合</h2>
+                    <ul>
+                        <li>求婚表白</li>
+                        <li>周年纪念</li>
+                        <li>重要节日</li>
+                        <li>高端礼赠</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h2>养护指南</h2>
+                    <ul>
+                        <li>每天更换清水，保持水位</li>
+                        <li>修剪花枝末端，45度角斜切</li>
+                        <li>避免阳光直射，远离空调出风口</li>
+                        <li>使用专业养花剂延长花期</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>花语之美 © 2025 版权所有</p>
+        <p>客服热线：400-888-8888</p>
+    </footer>
+</body>
+</html>

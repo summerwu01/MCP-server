@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花语之美 - 精品花艺</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <link rel="icon" href="data:,">
+    <style>
+        /* 保持原有的样式代码不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background-color: #1b2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .filters {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            min-width: 150px;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .view-button.active {
+            background-color: #1b2937;
+            color: white;
+            border-color: #1b2937;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            background: white;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card.list-view {
+            display: flex;
+            align-items: center;
+        }
+
+        .product-card.list-view img {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1b2937;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .product-tag {
+            background-color: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .buy-button {
+            background-color: #1b2937;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #2c3e50;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .feature h3 {
+            color: #1b2937;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #1b2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .product-card.list-view {
+                flex-direction: column;
+            }
+            .product-card.list-view img {
+                width: 100%;
+                height: 280px;
+            }
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>花语之美</h1>
+            <p>精品花艺，为您传递美好</p>
+        </header>
+
+        <div class="filters">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <select class="filter-select" v-model="priceSort">
+                        <option value="">价格排序</option>
+                        <option value="low">从低到高</option>
+                        <option value="high">从高到低</option>
+                    </select>
+                    <select class="filter-select" v-model="typeFilter">
+                        <option value="">花束类型</option>
+                        <option value="玫瑰">玫瑰系列</option>
+                        <option value="百合">百合系列</option>
+                        <option value="混合">混合系列</option>
+                    </select>
+                    <select class="filter-select" v-model="occasionFilter">
+                        <option value="">适用场合</option>
+                        <option value="生日">生日祝福</option>
+                        <option value="纪念日">周年纪念</option>
+                        <option value="表白">表达爱意</option>
+                        <option value="探望">慰问问候</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button :class="['view-button', {active: isGridView}]" @click="isGridView = true">网格视图</button>
+                    <button :class="['view-button', {active: !isGridView}]" @click="isGridView = false">列表视图</button>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div :class="isGridView ? 'product-grid' : 'product-list'">
+                <a v-for="product in filteredProducts" :key="product.id" 
+                   :href="product.link"
+                   :class="['product-card', {'list-view': !isGridView}]">
+                    <img :src="product.image" :alt="product.name">
+                    <div class="product-info">
+                        <h2 class="product-title">{{ product.name }}</h2>
+                        <div class="product-price">¥{{ product.price }}</div>
+                        <p class="product-description">{{ product.description }}</p>
+                        <div class="product-tags">
+                            <span v-for="tag in product.tags" :key="tag" class="product-tag">{{ tag }}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3>当日送达</h3>
+                    <p>北上广深等城市支持当日送达服务</p>
+                </div>
+                <div class="feature">
+                    <h3>新鲜保证</h3>
+                    <p>7天新鲜保证，提供养护指导</p>
+                </div>
+                <div class="feature">
+                    <h3>礼品卡服务</h3>
+                    <p>可免费附赠精美贺卡</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>花语之美 © 2025 版权所有</p>
+            <p>客服热线：400-888-8888</p>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, computed } = Vue;
+
+        createApp({
+            setup() {
+                const products = ref([
+                    {
+                        id: 1,
+                        name: "梦幻花语花束",
+                        price: 399,
+                        description: "粉玫瑰配白百合，优雅动人",
+                        image: "https://replicate.delivery/xezq/pe3rpvHSvjVTciXi6Jf6cFx7ITUk98Eod1JHw3MllvHCrzWUA/out-0.webp",
+                        type: "混合",
+                        occasions: ["生日", "表白"],
+                        tags: ["畅销", "新品"],
+                        link: "./product-menghuanhuayu.html"
+                    },
+                    {
+                        id: 2,
+                        name: "永恒之爱",
+                        price: 499,
+                        description: "红玫瑰与白兰花的浪漫邂逅",
+                        image: "https://replicate.delivery/xezq/m8kN9xEWVYoQJFidIFYgwXjkHeuZZSInhotNNj2uPp1x1ZLKA/out-0.webp",
+                        type: "玫瑰",
+                        occasions: ["纪念日", "表白"],
+                        tags: ["高级定制", "热卖"],
+                        link: "./product-yonghengzhiai.html"
+                    },
+                    {
+                        id: 3,
+                        name: "春日恋语",
+                        price: 459,
+                        description: "粉色牡丹配玫瑰，春季限定款",
+                        image: "https://replicate.delivery/xezq/4uBwWlaiv75nO1fbco5bKnfd8VUmLUr3YTAAQsWIBwTUYzWUA/out-0.webp",
+                        type: "混合",
+                        occasions: ["生日", "表白"],
+                        tags: ["限量", "新品"],
+                        link: "./product-chunrilingyu.html"
+                    },
+                    {
+                        id: 4,
+                        name: "纯洁之恋",
+                        price: 299,
+                        description: "白色百合与满天星的纯净搭配",
+                        image: "https://replicate.delivery/xezq/z5osrC4A8OrhKlfc8gaOqSbWXfcL7vmdr6RzQcXxd7gFszWUA/out-0.webp",
+                        type: "百合",
+                        occasions: ["探望", "纪念日"],
+                        tags: ["特惠", "畅销"],
+                        link: "./product-chunjizhilian.html"
+                    }
+                ]);
+
+                const priceSort = ref('');
+                const typeFilter = ref('');
+                const occasionFilter = ref('');
+                const isGridView = ref(true);
+
+                const filteredProducts = computed(() => {
+                    let result = [...products.value];
+
+                    // 应用类型筛选
+                    if (typeFilter.value) {
+                        result = result.filter(p => p.type === typeFilter.value);
+                    }
+
+                    // 应用场合筛选
+                    if (occasionFilter.value) {
+                        result = result.filter(p => p.occasions.includes(occasionFilter.value));
+                    }
+
+                    // 应用价格排序
+                    if (priceSort.value === 'low') {
+                        result.sort((a, b) => a.price - b.price);
+                    } else if (priceSort.value === 'high') {
+                        result.sort((a, b) => b.price - a.price);
+                    }
+
+                    return result;
+                });
+
+                return {
+                    priceSort,
+                    typeFilter,
+                    occasionFilter,
+                    isGridView,
+                    filteredProducts
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
